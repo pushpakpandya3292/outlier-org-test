@@ -39,4 +39,7 @@ git log --oneline
 
 ## Step 7: Push the Changes to New Repository
 git remote set-url origin https://github.com/pushpakpandya3292/outlier-org-test
-git push origin maste
+git push origin master
+
+
+### Now open above  repository and go to master branch there you can see 3 commints and if you click on commits you will see 3 commits in particular order
