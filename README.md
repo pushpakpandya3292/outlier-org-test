@@ -1,32 +1,45 @@
-![Outlier.org](https://i.imgur.com/vJowpL1.png)
+# Challenge Git Solution
 
----
+This github repository contains the solution to the challenge of rebasing two pull requests into the `master` branch in a specified order given by Outlier-org as a test task. 
 
-# Outlier Engineering Git Challenge
+## Steps to Reproduce the Solution
 
-At Outlier, you will be expected to be able to contribute features and fixes without causing conflicts and other version control headaches. An important tool for keeping codebases clean is `git rebase`. This challenge will test your understanding of a basic codebase and your ability to use `git rebase` properly.
+# Step 1: Clone the Original Repository [Given by Outlier_org]
+git clone https://github.com/outlier-org/challenge-git.git
+cd challenge-git
 
-## The Challenge
+# Step 2: Fetch only the Pull Requests Not all the info
+git fetch origin pull/3/head:feat/add-base64-endpoint
+git fetch origin pull/4/head:feat/add-user-agent-endpoint
 
-There are two pull requests open on this repo. Each change is in its own branch. The challenge is to use `git rebase` to add both changes to `master`. When you are finished, your `master` branch should have three commits in the following order:
+# Step 3: Check Out the Master Branch [If not alreaedy on master branch]
+git checkout master
 
-```
-* feat: add base64 endpoint
-* feat: add user-agent endpoint
-* init
-```
+# Step 4: Rebase the First Pull Request
+git rebase feat/add-base64-endpoint
 
-_ Any errors, missing features, missing tests, or failing tests will disqualify the solution. _
+# If conflicts occur during the rebase, resolve them manually and then 
+# git add <resolved_file_name> or git add .
+# git rebase --continue
 
-## Instructions
+# Repeat until the rebase is complete.
 
-How to attempt this challenge:
+# Step 5: Rebase the Second Pull Request
+git rebase feat/add-user-agent-endpoint
 
-1) Create a new repo in your account and note the git url
-2) Clone this repo
-3) Solve the challenge
-4) Set your new repo as the origin: `git remote set-url origin ${your repo url}`
-5) Push your solution to your repo
+# Again, resolve any conflicts same as above one 
+# Repeat until the rebase is complete.
 
-You must follow these steps for your solution to be accepted -- forks or other methods will not be considered.
+# Step 6: Verify the Commit Order
+git log --oneline
+# You should see:
+# 1. feat: add base64 endpoint
+# 2. feat: add user-agent endpoint
+# 3. init
 
+# Step 7: Push the Changes to New Repository
+git remote set-url origin https://github.com/pushpakpandya3292/outlier-org-test
+git push origin master
+
+
+##Soluti
